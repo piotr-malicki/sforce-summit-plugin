@@ -29,7 +29,77 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
+* [`sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-helloorg--n-string--f--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx sforce:org:setup -c <directory> -m <directory> [-a <string>] [-d] [-v <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-sforceorgsetup--c-directory--m-directory--a-string--d--v-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
+## `sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+print a greeting and your org IDs
+
+```
+USAGE
+  $ sfdx hello:org [-n <string>] [-f] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -f, --force                                                                       example boolean flag
+  -n, --name=<value>                                                                name to print
+  -u, --targetusername=<value>                                                      username or alias for the target
+                                                                                    org; overrides default target org
+  -v, --targetdevhubusername=<value>                                                username or alias for the dev hub
+                                                                                    org; overrides default dev hub org
+  --apiversion=<value>                                                              override the api version used for
+                                                                                    api requests made by this command
+  --json                                                                            format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+DESCRIPTION
+  print a greeting and your org IDs
+
+EXAMPLES
+  $ sfdx hello:org --targetusername myOrg@example.com --targetdevhubusername devhub@org.com
+
+  $ sfdx hello:org --name myname --targetusername myOrg@example.com
+```
+
+_See code: [src/commands/hello/org.ts](https://github.com/piotr-malicki/sforce-summit-plugin/blob/v0.0.1/src/commands/hello/org.ts)_
+
+## `sfdx sforce:org:setup -c <directory> -m <directory> [-a <string>] [-d] [-v <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+set up new org
+
+```
+USAGE
+  $ sfdx sforce:org:setup -c <directory> -m <directory> [-a <string>] [-d] [-v <string>] [--apiversion <string>]
+    [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -a, --alias=<value>                                                               scratch org alias
+  -c, --configfile=<value>                                                          (required) [default:
+                                                                                    config/project-scratch-def.json]
+                                                                                    path to scratch org configuration
+  -d, --defautl                                                                     set an org as default
+  -m, --metadata=<value>                                                            (required) [default: force-app]
+                                                                                    metadata directory
+  -v, --targetdevhubusername=<value>                                                username or alias for the dev hub
+                                                                                    org; overrides default dev hub org
+  --apiversion=<value>                                                              override the api version used for
+                                                                                    api requests made by this command
+  --json                                                                            format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+DESCRIPTION
+  set up new org
+
+EXAMPLES
+  $ sfdx sforce:org:setup
+
+  $ sfdx sforce:org:setup -a my-new-org -m force-app -c config/project-scratch-def.json -v DevHub
+```
+
+_See code: [src/commands/sforce/org/setup.ts](https://github.com/piotr-malicki/sforce-summit-plugin/blob/v0.0.1/src/commands/sforce/org/setup.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin
